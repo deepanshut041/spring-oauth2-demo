@@ -32,7 +32,7 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 	implementation('org.springframework.boot:spring-boot-starter-security')
 	implementation('org.springframework.boot:spring-boot-starter-web')
-	
+	implementation('org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.1.RELEASE')
 	implementation('de.codecentric:spring-boot-admin-starter-client')
 	implementation('de.codecentric:spring-boot-admin-starter-server')
 	runtimeOnly('com.h2database:h2')
