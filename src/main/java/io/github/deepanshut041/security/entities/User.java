@@ -1,28 +1,40 @@
 package io.github.deepanshut041.security.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.github.deepanshut041.security.entities.enums.AuthProvider;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Email
+    @Column(nullable = false)
+    private String email;
+
+    private String imageUrl;
+
+    @Column(nullable = false)
+    private Boolean emailVerified = false;
+
+    @JsonIgnore
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Role> roles;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private AuthProvider provider;
 
-    public User() {
-    }
-
-    public User(String username, String password, Set<Role> roles) {
-        this.username = username;
-        this.password = password;
-        this.roles = roles;
-    }
+    private String providerId;
 
     public Long getId() {
         return id;
@@ -32,12 +44,36 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Boolean getEmailVerified() {
+        return emailVerified;
+    }
+
+    public void setEmailVerified(Boolean emailVerified) {
+        this.emailVerified = emailVerified;
     }
 
     public String getPassword() {
@@ -48,11 +84,19 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public AuthProvider getProvider() {
+        return provider;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setProvider(AuthProvider provider) {
+        this.provider = provider;
+    }
+
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
     }
 }
