@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-card-title>
+        <h3 id="title" class="text-center">SIGN UP</h3>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content class="p-4">
+        <form [formGroup]="signUpFrom" (ngSubmit)="register()">
+            <mat-form-field class="w-100">
+                <mat-label>Email address</mat-label>
+                <input matInput type="email" placeholder="Email address" fieldSize="large" formControlName="email">
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <mat-label>Full Name</mat-label>
+                <input matInput type="text" placeholder="Full Name" fieldSize="large" formControlName="name">
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="Password" fieldSize="large" formControlName="password">
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput type="password" placeholder="Confirm Password" fieldSize="large"
+                    formControlName="cpassword">
+            </mat-form-field>
+            <button class="btn btn-outline-primary btn-block btn-lg" [disabled]="!signUpFrom.valid">Sign Up</button>
+        </form>
+    </mat-card-content>
+    <mat-card-footer>
+        <p class="another-action text-center" aria-label="Register">
+            Already have an account? <a class="text-link" routerLink="../signin">Sigin</a>
+        </p>
+    </mat-card-footer>
+</mat-card>

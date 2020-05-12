@@ -1,0 +1,24 @@
+<div class="container h-100">
+    <div class="row h-100 no-gutters justify-content-center align-items-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <mat-card>
+                <mat-card-title>
+                    <h3 id="title" class="text-center">USER PROFILE</h3>
+                </mat-card-title>
+                <mat-divider></mat-divider>
+                <mat-card-content class="p-4 mt-3 mb-3">
+                    <div *ngIf="profile" class="text-center">
+                        <img src="{{profile.imgUrl}}" class="img-fluid rounded-circle mx-auto d-block pr-5 pl-5" />
+                        <h4>{{profile.name}}</h4>
+                    </div>
+                    <div *ngIf="!profile">
+                        <mat-spinner class="text-center"></mat-spinner>
+                    </div>
+                </mat-card-content>
+                <mat-card-footer class="m-3">
+                    <button class="btn btn-outline-primary btn-block btn-lg" (click)="signOut()">Sign Out</button>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+</div>
