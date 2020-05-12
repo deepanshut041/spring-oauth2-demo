@@ -1,14 +1,14 @@
 package io.github.deepanshut041.sod.domain.service
 
-import io.github.deepanshut041.sod.data.entity.UserEntity
-import io.github.deepanshut041.sod.data.entity.UserEntityMapper
-import io.github.deepanshut041.sod.data.repository.UserRepository
-import io.github.deepanshut041.sod.domain.model.enums.AuthProvider
-import io.github.deepanshut041.sod.domain.model.UserModel
-import io.github.deepanshut041.sod.util.OAuth2AuthenticationProcessingException
 import io.github.deepanshut041.sod.auth.util.OAuth2UserInfo
 import io.github.deepanshut041.sod.auth.util.OAuth2UserInfoFactory.getOAuth2UserInfo
 import io.github.deepanshut041.sod.auth.util.UserPrincipal
+import io.github.deepanshut041.sod.data.entity.UserEntity
+import io.github.deepanshut041.sod.data.entity.UserEntityMapper
+import io.github.deepanshut041.sod.data.repository.UserRepository
+import io.github.deepanshut041.sod.domain.model.UserModel
+import io.github.deepanshut041.sod.domain.model.enums.AuthProvider
+import io.github.deepanshut041.sod.util.OAuth2AuthenticationProcessingException
 import io.github.deepanshut041.sod.util.toNullable
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.InternalAuthenticationServiceException
@@ -58,7 +58,7 @@ class CustomOAuth2UserService(@Autowired private val userRepository: UserReposit
 
     private fun registerNewUser(oAuth2UserRequest: OAuth2UserRequest, oAuth2UserInfo: OAuth2UserInfo): UserModel {
         val user = UserEntity(
-                id = "",
+                id = null,
                 provider = AuthProvider.valueOf(oAuth2UserRequest.clientRegistration.registrationId),
                 providerId = oAuth2UserInfo.getId(),
                 name = oAuth2UserInfo.getName(),
