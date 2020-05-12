@@ -1,6 +1,5 @@
 package io.github.deepanshut041.sod.config
 
-import io.swagger.v3.oas.annotations.enums.SecuritySchemeType
 import io.swagger.v3.oas.models.Components
 import io.swagger.v3.oas.models.OpenAPI
 import io.swagger.v3.oas.models.info.Info
@@ -12,6 +11,7 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class ApiConfiguration {
+
     @Bean
     fun customOpenAPI(@Value("\${springdoc.version}") appVersion: String?): OpenAPI? {
         return OpenAPI()
@@ -24,5 +24,6 @@ class ApiConfiguration {
                         }))
                 .info(Info().title("Spring Oauth2 Demo").version(appVersion)
                         .license(License().name("Apache 2.0").url("http://springdoc.org")))
+
     }
 }

@@ -70,7 +70,7 @@ class AccountController(
         )
 
         val result = userService.saveUser(user)
-        return ResponseEntity.ok(ApiResponse(true, "User registered successfully@"))
+        return ResponseEntity.ok(ApiResponse(true, "User registered successfully"))
     }
 
 
